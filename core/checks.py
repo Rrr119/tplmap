@@ -21,9 +21,16 @@ from core.channel import Channel
 from utils.loggers import log
 from core.clis import Shell, MultilineShell
 from core.tcpserver import TcpServer
+from core.variants import run_suite, format_report
 import time
-import telnetlib
 import sys
+
+try:
+    # telnetlib has been removed from the standard library in Python 3.13.
+    # It is only needed for the interactive --bind-shell flow.
+    import telnetlib
+except ModuleNotFoundError:
+    telnetlib = None
 
 if sys.version_info.major > 2 :
     import urllib.parse as urlparse
@@ -161,6 +168,18 @@ def check_template_injection(channel):
     # Print injection summary
     _print_injection_summary(channel)
 
+    # Optionally probe and report the extra payload variants
+    if channel.args.get('payload_variants') and current_plugin is not None:
+
+        variant_results = run_suite(current_plugin)
+        channel.data['variant_results'] = variant_results
+
+        log.info(format_report(
+            current_plugin.plugin,
+            variant_results,
+            channel.data.get('detection_variant')
+        ))
+
     # If actions are not required, prints the advices and exit
     if not any(
             f for f,v in channel.args.items() if f in (
@@ -280,11 +299,17 @@ def check_template_injection(channel):
 
                 thread.join(timeout=1)
 
-                if not thread.isAlive():
+                if not thread.is_alive():
                     continue
 
                 try:
 
+                    if telnetlib is None:
+                        log.error("Interactive bind shell requires telnetlib, "
+                                  "which is not available on this Python version. "
+                                  "Connect manually with: nc %s %i" % (
+                                      urlparsed.hostname, bind_shell_port))
+                        return
                     telnetlib.Telnet(urlparsed.hostname, bind_shell_port, timeout = 5).interact()
 
                     # If telnetlib does not rise an exception, we can assume that

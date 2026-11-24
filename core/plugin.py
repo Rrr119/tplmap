@@ -4,6 +4,7 @@ import sys
 from utils.strings import chunkit, md5
 from utils import rand
 from utils.loggers import log
+from core.variants import build_variants, score_variant
 import collections
 import re
 import itertools
@@ -14,12 +15,17 @@ import threading
 import time
 import utils.config
 
+try:
+    from collections.abc import Mapping as _Mapping
+except ImportError:  # Python 2 compatibility
+    from collections import Mapping as _Mapping
+
 def _recursive_update(d, u):
     # Update value of a nested dictionary of varying depth
 
     for k, v in u.items():
-        if isinstance(d, collections.Mapping):
-            if isinstance(v, collections.Mapping):
+        if isinstance(d, _Mapping):
+            if isinstance(v, _Mapping):
                 r = _recursive_update(d.get(k, {}), v)
                 d[k] = r
             else:
@@ -368,6 +374,61 @@ class Plugin(object):
                 self.set('suffix', suffix)
                 self.channel.detected('render', {'expected' : expected})
                 return
+
+            # When --variants is used, retry the same context with the
+            # additional payload catalogue of this engine. This rescues
+            # detection when the canonical test_render probe is blocked or
+            # altered by a filter while equivalent expressions still evaluate.
+            if self.channel.args.get('payload_variants'):
+
+                variant_hit = self._detect_render_variant(
+                    prefix = prefix,
+                    suffix = suffix,
+                    header = header,
+                    trailer = trailer,
+                    header_rand = header_rand,
+                    trailer_rand = trailer_rand
+                )
+
+                if variant_hit is not None:
+                    self.set('render', render_action.get('render'))
+                    self.set('header', render_action.get('header'))
+                    self.set('trailer', render_action.get('trailer'))
+                    self.set('prefix', prefix)
+                    self.set('suffix', suffix)
+                    self.set('detection_variant', variant_hit.get('name'))
+                    self.channel.detected('render', {
+                        'expected': variant_hit.get('expected'),
+                        'variant': variant_hit.get('name')
+                    })
+                    return
+
+    def _detect_render_variant(self, prefix, suffix, header, trailer,
+                               header_rand, trailer_rand):
+        # Return the first catalogue variant that confirms rendering in
+        # the currently tested prefix/suffix context, else None.
+
+        for variant in build_variants(self.plugin):
+
+            result = self.render(
+                code = variant.get('code'),
+                header = header,
+                trailer = trailer,
+                header_rand = header_rand,
+                trailer_rand = trailer_rand,
+                prefix = prefix,
+                suffix = suffix
+            )
+
+            if isinstance(result, str):
+                result = result.strip()
+
+            if score_variant(variant, result):
+                log.info('%s plugin confirmed with payload variant %s' % (
+                    self.plugin, variant.get('name')))
+                return variant
+
+        return None
 
     """
     Raw inject of the payload.

@@ -142,6 +142,39 @@ Tplmap supports over 15 template engines, unsandboxed template engines and gener
 | Dust (> dustjs-helpers@1.5.0) | × | ×          | ×               | ×         | ×          |
 
 
+Payload variants and three-range detection comparison
+-----------------------------------------------------
+
+Jinja2, Twig and FreeMarker ship with an additional catalogue of side-effect
+free payload variants (arithmetic, string and filter/builtin probes). The
+existing CLI and all legacy options keep working; two additive options are
+available:
+
+```bash
+# List the built-in variants and exit
+python3 tplmap.py --list-variants
+
+# Detect as usual, retry contexts with variants and report which ones hit
+python3 tplmap.py -u 'http://target/page?name=*' --variants
+```
+
+Variant fallback only runs with `--variants`, so default scans and the
+existing data contract are unchanged. The `ranges/` directory contains three
+local targets running the real Jinja2, Twig 3 and FreeMarker engines, and
+`benchmarks/run_comparison.py` measures the detection rate on an 8-case
+matrix per range (context escapes plus canonical/secondary filter cases):
+
+```bash
+bash ranges/setup_runtimes.sh                 # optional PHP/Java runtimes
+python3 benchmarks/run_comparison.py          # writes artifacts/detection_comparison.{md,json}
+python3 -m unittest tests.test_engine_variants -v
+```
+
+On the bundled three ranges the canonical probe detects 6/8 cases per engine
+(75%) while variant-assisted detection reaches 8/8 (100%); see
+`artifacts/detection_comparison.md` for the live numbers.
+
+
 Burp Suite Plugin
 -----------------
 

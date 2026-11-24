@@ -1,5 +1,6 @@
 from optparse import OptionGroup
 from optparse import OptionParser
+from optparse import SUPPRESS_HELP
 
 import os
 import sys
@@ -82,6 +83,26 @@ detection.add_option("-t", "--technique",
                     dest="technique",
                     help="Techniques R(endered) T(ime-based blind). Default: RT.",
                     default="RT")
+
+detection.add_option("--variants",
+                    dest="payload_variants",
+                    action="store_true",
+                    default=False,
+                    help="Try extra Jinja2/Twig/Freemarker payload variants to "
+                         "improve detection and report which variants succeed.")
+
+detection.add_option("--payload-variants",
+                    dest="payload_variants",
+                    action="store_true",
+                    default=False,
+                    help=SUPPRESS_HELP)
+
+detection.add_option("--list-variants",
+                    dest="list_variants",
+                    action="store_true",
+                    default=False,
+                    help="List the built-in payload variants for "
+                         "Jinja2/Twig/Freemarker and exit.")
 
 # Template inspection options
 tplcmd = OptionGroup(parser, "Template inspection", "These "

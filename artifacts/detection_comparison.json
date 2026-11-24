@@ -1,0 +1,2524 @@
+{
+  "generated_at": "2026-11-25 00:29:49+0800",
+  "python": "3.14.4",
+  "availability": {
+    "jinja2": true,
+    "twig": true,
+    "freemarker": true
+  },
+  "engines": {
+    "jinja2": {
+      "range_url": "http://127.0.0.1:46551",
+      "total_cases": 8,
+      "baseline_detected": 6,
+      "variants_detected": 8,
+      "baseline_rate": 0.75,
+      "variants_rate": 1.0,
+      "gained": [
+        "filter_canonical_text",
+        "filter_operator_wrapped"
+      ],
+      "variant_hits": {
+        "math_7x7": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "math_random_mul": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "string_multiply_python": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "tilde_concat": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "upper_filter": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "power_operator": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "list_join_filter": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        }
+      },
+      "cases": [
+        {
+          "id": "text",
+          "template": "%s",
+          "level": 0,
+          "clevel": 0,
+          "filter": null,
+          "url": "http://127.0.0.1:46551/reflect/jinja2?tpl=%25s&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "294",
+              "code": "98*3",
+              "payload": "{{98*3}}",
+              "hit": true,
+              "output": "294",
+              "error": null
+            },
+            {
+              "name": "string_multiply_python",
+              "description": "Jinja2/Python string repetition 7*'7' -> 7777777",
+              "match": "equals",
+              "expected": "7777777",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "7777777",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "afoenhbrdlo",
+              "code": "'afoen'~'hbrdlo'",
+              "payload": "{{'afoen'~'hbrdlo'}}",
+              "hit": true,
+              "output": "afoenhbrdlo",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper-case filter on a random string",
+              "match": "equals",
+              "expected": "UMDQPFH",
+              "code": "'umdqpfh'|upper",
+              "payload": "{{'umdqpfh'|upper}}",
+              "hit": true,
+              "output": "UMDQPFH",
+              "error": null
+            },
+            {
+              "name": "power_operator",
+              "description": "Power operator 2**8",
+              "match": "equals",
+              "expected": "256",
+              "code": "2**8",
+              "payload": "{{2**8}}",
+              "hit": true,
+              "output": "256",
+              "error": null
+            },
+            {
+              "name": "list_join_filter",
+              "description": "List literal joined with a dash",
+              "match": "equals",
+              "expected": "afoen-hbrdlo",
+              "code": "['afoen','hbrdlo']|join('-')",
+              "payload": "{{['afoen','hbrdlo']|join('-')}}",
+              "hit": true,
+              "output": "afoen-hbrdlo",
+              "error": null
+            }
+          ],
+          "_engine": "jinja2"
+        },
+        {
+          "id": "wrapped",
+          "template": "AAA%sAAA",
+          "level": 0,
+          "clevel": 0,
+          "filter": null,
+          "url": "http://127.0.0.1:46551/reflect/jinja2?tpl=AAA%25sAAA&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "33",
+              "code": "11*3",
+              "payload": "{{11*3}}",
+              "hit": true,
+              "output": "33",
+              "error": null
+            },
+            {
+              "name": "string_multiply_python",
+              "description": "Jinja2/Python string repetition 7*'7' -> 7777777",
+              "match": "equals",
+              "expected": "7777777",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "7777777",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "vunkaahdrqk",
+              "code": "'vunka'~'ahdrqk'",
+              "payload": "{{'vunka'~'ahdrqk'}}",
+              "hit": true,
+              "output": "vunkaahdrqk",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper-case filter on a random string",
+              "match": "equals",
+              "expected": "VILJFYE",
+              "code": "'viljfye'|upper",
+              "payload": "{{'viljfye'|upper}}",
+              "hit": true,
+              "output": "VILJFYE",
+              "error": null
+            },
+            {
+              "name": "power_operator",
+              "description": "Power operator 2**8",
+              "match": "equals",
+              "expected": "256",
+              "code": "2**8",
+              "payload": "{{2**8}}",
+              "hit": true,
+              "output": "256",
+              "error": null
+            },
+            {
+              "name": "list_join_filter",
+              "description": "List literal joined with a dash",
+              "match": "equals",
+              "expected": "vunka-ahdrqk",
+              "code": "['vunka','ahdrqk']|join('-')",
+              "payload": "{{['vunka','ahdrqk']|join('-')}}",
+              "hit": true,
+              "output": "vunka-ahdrqk",
+              "error": null
+            }
+          ],
+          "_engine": "jinja2"
+        },
+        {
+          "id": "echo_tag_compact",
+          "template": "{{%s}}",
+          "level": 1,
+          "clevel": 1,
+          "filter": null,
+          "url": "http://127.0.0.1:46551/reflect/jinja2?tpl=%7B%7B%25s%7D%7D&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "114",
+              "code": "19*6",
+              "payload": "{{19*6}}",
+              "hit": true,
+              "output": "114",
+              "error": null
+            },
+            {
+              "name": "string_multiply_python",
+              "description": "Jinja2/Python string repetition 7*'7' -> 7777777",
+              "match": "equals",
+              "expected": "7777777",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "7777777",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "smpbntlmkfy",
+              "code": "'smpbn'~'tlmkfy'",
+              "payload": "{{'smpbn'~'tlmkfy'}}",
+              "hit": true,
+              "output": "smpbntlmkfy",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper-case filter on a random string",
+              "match": "equals",
+              "expected": "PDHPUYO",
+              "code": "'pdhpuyo'|upper",
+              "payload": "{{'pdhpuyo'|upper}}",
+              "hit": true,
+              "output": "PDHPUYO",
+              "error": null
+            },
+            {
+              "name": "power_operator",
+              "description": "Power operator 2**8",
+              "match": "equals",
+              "expected": "256",
+              "code": "2**8",
+              "payload": "{{2**8}}",
+              "hit": true,
+              "output": "256",
+              "error": null
+            },
+            {
+              "name": "list_join_filter",
+              "description": "List literal joined with a dash",
+              "match": "equals",
+              "expected": "smpbn-tlmkfy",
+              "code": "['smpbn','tlmkfy']|join('-')",
+              "payload": "{{['smpbn','tlmkfy']|join('-')}}",
+              "hit": true,
+              "output": "smpbn-tlmkfy",
+              "error": null
+            }
+          ],
+          "_engine": "jinja2"
+        },
+        {
+          "id": "quoted_string",
+          "template": "{{ '%s' }}",
+          "level": 1,
+          "clevel": 1,
+          "filter": null,
+          "url": "http://127.0.0.1:46551/reflect/jinja2?tpl=%7B%7B+%27%25s%27+%7D%7D&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "132",
+              "code": "22*6",
+              "payload": "{{22*6}}",
+              "hit": true,
+              "output": "132",
+              "error": null
+            },
+            {
+              "name": "string_multiply_python",
+              "description": "Jinja2/Python string repetition 7*'7' -> 7777777",
+              "match": "equals",
+              "expected": "7777777",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "7777777",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "mqramabbfko",
+              "code": "'mqram'~'abbfko'",
+              "payload": "{{'mqram'~'abbfko'}}",
+              "hit": true,
+              "output": "mqramabbfko",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper-case filter on a random string",
+              "match": "equals",
+              "expected": "MMWVSWD",
+              "code": "'mmwvswd'|upper",
+              "payload": "{{'mmwvswd'|upper}}",
+              "hit": true,
+              "output": "MMWVSWD",
+              "error": null
+            },
+            {
+              "name": "power_operator",
+              "description": "Power operator 2**8",
+              "match": "equals",
+              "expected": "256",
+              "code": "2**8",
+              "payload": "{{2**8}}",
+              "hit": true,
+              "output": "256",
+              "error": null
+            },
+            {
+              "name": "list_join_filter",
+              "description": "List literal joined with a dash",
+              "match": "equals",
+              "expected": "mqram-abbfko",
+              "code": "['mqram','abbfko']|join('-')",
+              "payload": "{{['mqram','abbfko']|join('-')}}",
+              "hit": true,
+              "output": "mqram-abbfko",
+              "error": null
+            }
+          ],
+          "_engine": "jinja2"
+        },
+        {
+          "id": "if_block",
+          "template": "{% if %s: %}{% endif %}",
+          "level": 1,
+          "clevel": 1,
+          "filter": null,
+          "url": "http://127.0.0.1:46551/reflect/jinja2?tpl=%7B%25+if+%25s%3A+%25%7D%7B%25+endif+%25%7D&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "456",
+              "code": "57*8",
+              "payload": "{{57*8}}",
+              "hit": true,
+              "output": "456",
+              "error": null
+            },
+            {
+              "name": "string_multiply_python",
+              "description": "Jinja2/Python string repetition 7*'7' -> 7777777",
+              "match": "equals",
+              "expected": "7777777",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "7777777",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "gwptdiezank",
+              "code": "'gwptd'~'iezank'",
+              "payload": "{{'gwptd'~'iezank'}}",
+              "hit": true,
+              "output": "gwptdiezank",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper-case filter on a random string",
+              "match": "equals",
+              "expected": "EMHNTCU",
+              "code": "'emhntcu'|upper",
+              "payload": "{{'emhntcu'|upper}}",
+              "hit": true,
+              "output": "EMHNTCU",
+              "error": null
+            },
+            {
+              "name": "power_operator",
+              "description": "Power operator 2**8",
+              "match": "equals",
+              "expected": "256",
+              "code": "2**8",
+              "payload": "{{2**8}}",
+              "hit": true,
+              "output": "256",
+              "error": null
+            },
+            {
+              "name": "list_join_filter",
+              "description": "List literal joined with a dash",
+              "match": "equals",
+              "expected": "gwptd-iezank",
+              "code": "['gwptd','iezank']|join('-')",
+              "payload": "{{['gwptd','iezank']|join('-')}}",
+              "hit": true,
+              "output": "gwptd-iezank",
+              "error": null
+            }
+          ],
+          "_engine": "jinja2"
+        },
+        {
+          "id": "comment_block",
+          "template": "{# %s #}",
+          "level": 5,
+          "clevel": 1,
+          "filter": null,
+          "url": "http://127.0.0.1:46551/reflect/jinja2?tpl=%7B%23+%25s+%23%7D&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "336",
+              "code": "48*7",
+              "payload": "{{48*7}}",
+              "hit": true,
+              "output": "336",
+              "error": null
+            },
+            {
+              "name": "string_multiply_python",
+              "description": "Jinja2/Python string repetition 7*'7' -> 7777777",
+              "match": "equals",
+              "expected": "7777777",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "7777777",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "baylbqbqlat",
+              "code": "'baylb'~'qbqlat'",
+              "payload": "{{'baylb'~'qbqlat'}}",
+              "hit": true,
+              "output": "baylbqbqlat",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper-case filter on a random string",
+              "match": "equals",
+              "expected": "LTINPOM",
+              "code": "'ltinpom'|upper",
+              "payload": "{{'ltinpom'|upper}}",
+              "hit": true,
+              "output": "LTINPOM",
+              "error": null
+            },
+            {
+              "name": "power_operator",
+              "description": "Power operator 2**8",
+              "match": "equals",
+              "expected": "256",
+              "code": "2**8",
+              "payload": "{{2**8}}",
+              "hit": true,
+              "output": "256",
+              "error": null
+            },
+            {
+              "name": "list_join_filter",
+              "description": "List literal joined with a dash",
+              "match": "equals",
+              "expected": "baylb-qbqlat",
+              "code": "['baylb','qbqlat']|join('-')",
+              "payload": "{{['baylb','qbqlat']|join('-')}}",
+              "hit": true,
+              "output": "baylb-qbqlat",
+              "error": null
+            }
+          ],
+          "_engine": "jinja2"
+        },
+        {
+          "id": "filter_canonical_text",
+          "template": "%s",
+          "level": 0,
+          "clevel": 0,
+          "filter": "filter_canonical",
+          "url": "http://127.0.0.1:46551/reflect/jinja2/filter_canonical?tpl=%25s&inj=*",
+          "baseline_detected": false,
+          "variants_detected": true,
+          "rescued_by_variant": "math_7x7",
+          "detection_variant": "math_7x7",
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "330",
+              "code": "55*6",
+              "payload": "{{55*6}}",
+              "hit": true,
+              "output": "330",
+              "error": null
+            },
+            {
+              "name": "string_multiply_python",
+              "description": "Jinja2/Python string repetition 7*'7' -> 7777777",
+              "match": "equals",
+              "expected": "7777777",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "7777777",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "yiiicamztrd",
+              "code": "'yiiic'~'amztrd'",
+              "payload": "{{'yiiic'~'amztrd'}}",
+              "hit": true,
+              "output": "yiiicamztrd",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper-case filter on a random string",
+              "match": "equals",
+              "expected": "XOGDXKA",
+              "code": "'xogdxka'|upper",
+              "payload": "{{'xogdxka'|upper}}",
+              "hit": true,
+              "output": "XOGDXKA",
+              "error": null
+            },
+            {
+              "name": "power_operator",
+              "description": "Power operator 2**8",
+              "match": "equals",
+              "expected": "256",
+              "code": "2**8",
+              "payload": "{{2**8}}",
+              "hit": true,
+              "output": "256",
+              "error": null
+            },
+            {
+              "name": "list_join_filter",
+              "description": "List literal joined with a dash",
+              "match": "equals",
+              "expected": "yiiic-amztrd",
+              "code": "['yiiic','amztrd']|join('-')",
+              "payload": "{{['yiiic','amztrd']|join('-')}}",
+              "hit": false,
+              "output": "",
+              "error": null
+            }
+          ],
+          "_engine": "jinja2"
+        },
+        {
+          "id": "filter_operator_wrapped",
+          "template": "AAA%sAAA",
+          "level": 0,
+          "clevel": 0,
+          "filter": "filter_secondary",
+          "url": "http://127.0.0.1:46551/reflect/jinja2/filter_secondary?tpl=AAA%25sAAA&inj=*",
+          "baseline_detected": false,
+          "variants_detected": true,
+          "rescued_by_variant": "tilde_concat",
+          "detection_variant": "tilde_concat",
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": false,
+              "output": "",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "360",
+              "code": "40*9",
+              "payload": "{{40*9}}",
+              "hit": false,
+              "output": "",
+              "error": null
+            },
+            {
+              "name": "string_multiply_python",
+              "description": "Jinja2/Python string repetition 7*'7' -> 7777777",
+              "match": "equals",
+              "expected": "7777777",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": false,
+              "output": "",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "jodewkuapsa",
+              "code": "'jodew'~'kuapsa'",
+              "payload": "{{'jodew'~'kuapsa'}}",
+              "hit": true,
+              "output": "jodewkuapsa",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper-case filter on a random string",
+              "match": "equals",
+              "expected": "HGXXDMX",
+              "code": "'hgxxdmx'|upper",
+              "payload": "{{'hgxxdmx'|upper}}",
+              "hit": true,
+              "output": "HGXXDMX",
+              "error": null
+            },
+            {
+              "name": "power_operator",
+              "description": "Power operator 2**8",
+              "match": "equals",
+              "expected": "256",
+              "code": "2**8",
+              "payload": "{{2**8}}",
+              "hit": false,
+              "output": "",
+              "error": null
+            },
+            {
+              "name": "list_join_filter",
+              "description": "List literal joined with a dash",
+              "match": "equals",
+              "expected": "jodew-kuapsa",
+              "code": "['jodew','kuapsa']|join('-')",
+              "payload": "{{['jodew','kuapsa']|join('-')}}",
+              "hit": true,
+              "output": "jodew-kuapsa",
+              "error": null
+            }
+          ],
+          "_engine": "jinja2"
+        }
+      ]
+    },
+    "twig": {
+      "range_url": "http://127.0.0.1:48603",
+      "total_cases": 8,
+      "baseline_detected": 6,
+      "variants_detected": 8,
+      "baseline_rate": 0.75,
+      "variants_rate": 1.0,
+      "gained": [
+        "filter_canonical_text",
+        "filter_quotes_wrapped"
+      ],
+      "variant_hits": {
+        "math_7x7": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "math_random_mul": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "string_multiply_coerced": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "tilde_concat": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "upper_filter": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "abs_filter": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "array_join_filter": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        }
+      },
+      "cases": [
+        {
+          "id": "text",
+          "template": "%s",
+          "level": 0,
+          "clevel": 0,
+          "filter": null,
+          "url": "http://127.0.0.1:48603/reflect/twig?tpl=%25s&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "328",
+              "code": "82*4",
+              "payload": "{{82*4}}",
+              "hit": true,
+              "output": "328",
+              "error": null
+            },
+            {
+              "name": "string_multiply_coerced",
+              "description": "Twig coerces the string in 7*'7' -> 49",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "mvalkvvozme",
+              "code": "'mvalk'~'vvozme'",
+              "payload": "{{'mvalk'~'vvozme'}}",
+              "hit": true,
+              "output": "mvalkvvozme",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper filter on a random string",
+              "match": "equals",
+              "expected": "MBBUUOI",
+              "code": "'mbbuuoi'|upper",
+              "payload": "{{'mbbuuoi'|upper}}",
+              "hit": true,
+              "output": "MBBUUOI",
+              "error": null
+            },
+            {
+              "name": "abs_filter",
+              "description": "Absolute value filter with grouping parentheses",
+              "match": "equals",
+              "expected": "42",
+              "code": "(-42)|abs",
+              "payload": "{{(-42)|abs}}",
+              "hit": true,
+              "output": "42",
+              "error": null
+            },
+            {
+              "name": "array_join_filter",
+              "description": "Array literal joined with a dash",
+              "match": "equals",
+              "expected": "mvalk-vvozme",
+              "code": "['mvalk','vvozme']|join('-')",
+              "payload": "{{['mvalk','vvozme']|join('-')}}",
+              "hit": true,
+              "output": "mvalk-vvozme",
+              "error": null
+            }
+          ],
+          "_engine": "twig"
+        },
+        {
+          "id": "wrapped",
+          "template": "AAA%sAAA",
+          "level": 0,
+          "clevel": 0,
+          "filter": null,
+          "url": "http://127.0.0.1:48603/reflect/twig?tpl=AAA%25sAAA&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "150",
+              "code": "75*2",
+              "payload": "{{75*2}}",
+              "hit": true,
+              "output": "150",
+              "error": null
+            },
+            {
+              "name": "string_multiply_coerced",
+              "description": "Twig coerces the string in 7*'7' -> 49",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "gkzvfycyisn",
+              "code": "'gkzvf'~'ycyisn'",
+              "payload": "{{'gkzvf'~'ycyisn'}}",
+              "hit": true,
+              "output": "gkzvfycyisn",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper filter on a random string",
+              "match": "equals",
+              "expected": "JJCUMGS",
+              "code": "'jjcumgs'|upper",
+              "payload": "{{'jjcumgs'|upper}}",
+              "hit": true,
+              "output": "JJCUMGS",
+              "error": null
+            },
+            {
+              "name": "abs_filter",
+              "description": "Absolute value filter with grouping parentheses",
+              "match": "equals",
+              "expected": "92",
+              "code": "(-92)|abs",
+              "payload": "{{(-92)|abs}}",
+              "hit": true,
+              "output": "92",
+              "error": null
+            },
+            {
+              "name": "array_join_filter",
+              "description": "Array literal joined with a dash",
+              "match": "equals",
+              "expected": "gkzvf-ycyisn",
+              "code": "['gkzvf','ycyisn']|join('-')",
+              "payload": "{{['gkzvf','ycyisn']|join('-')}}",
+              "hit": true,
+              "output": "gkzvf-ycyisn",
+              "error": null
+            }
+          ],
+          "_engine": "twig"
+        },
+        {
+          "id": "echo_tag_spaced",
+          "template": "{{ %s }}",
+          "level": 1,
+          "clevel": 0,
+          "filter": null,
+          "url": "http://127.0.0.1:48603/reflect/twig?tpl=%7B%7B+%25s+%7D%7D&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "390",
+              "code": "78*5",
+              "payload": "{{78*5}}",
+              "hit": true,
+              "output": "390",
+              "error": null
+            },
+            {
+              "name": "string_multiply_coerced",
+              "description": "Twig coerces the string in 7*'7' -> 49",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "dcglaxzgmpu",
+              "code": "'dcgla'~'xzgmpu'",
+              "payload": "{{'dcgla'~'xzgmpu'}}",
+              "hit": true,
+              "output": "dcglaxzgmpu",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper filter on a random string",
+              "match": "equals",
+              "expected": "UEXKSRJ",
+              "code": "'uexksrj'|upper",
+              "payload": "{{'uexksrj'|upper}}",
+              "hit": true,
+              "output": "UEXKSRJ",
+              "error": null
+            },
+            {
+              "name": "abs_filter",
+              "description": "Absolute value filter with grouping parentheses",
+              "match": "equals",
+              "expected": "37",
+              "code": "(-37)|abs",
+              "payload": "{{(-37)|abs}}",
+              "hit": true,
+              "output": "37",
+              "error": null
+            },
+            {
+              "name": "array_join_filter",
+              "description": "Array literal joined with a dash",
+              "match": "equals",
+              "expected": "dcgla-xzgmpu",
+              "code": "['dcgla','xzgmpu']|join('-')",
+              "payload": "{{['dcgla','xzgmpu']|join('-')}}",
+              "hit": true,
+              "output": "dcgla-xzgmpu",
+              "error": null
+            }
+          ],
+          "_engine": "twig"
+        },
+        {
+          "id": "set_quoted",
+          "template": "{% set foo = '%s' %}",
+          "level": 1,
+          "clevel": 0,
+          "filter": null,
+          "url": "http://127.0.0.1:48603/reflect/twig?tpl=%7B%25+set+foo+%3D+%27%25s%27+%25%7D&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "532",
+              "code": "76*7",
+              "payload": "{{76*7}}",
+              "hit": true,
+              "output": "532",
+              "error": null
+            },
+            {
+              "name": "string_multiply_coerced",
+              "description": "Twig coerces the string in 7*'7' -> 49",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "mdaokesocvy",
+              "code": "'mdaok'~'esocvy'",
+              "payload": "{{'mdaok'~'esocvy'}}",
+              "hit": true,
+              "output": "mdaokesocvy",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper filter on a random string",
+              "match": "equals",
+              "expected": "HAVUGAD",
+              "code": "'havugad'|upper",
+              "payload": "{{'havugad'|upper}}",
+              "hit": true,
+              "output": "HAVUGAD",
+              "error": null
+            },
+            {
+              "name": "abs_filter",
+              "description": "Absolute value filter with grouping parentheses",
+              "match": "equals",
+              "expected": "64",
+              "code": "(-64)|abs",
+              "payload": "{{(-64)|abs}}",
+              "hit": true,
+              "output": "64",
+              "error": null
+            },
+            {
+              "name": "array_join_filter",
+              "description": "Array literal joined with a dash",
+              "match": "equals",
+              "expected": "mdaok-esocvy",
+              "code": "['mdaok','esocvy']|join('-')",
+              "payload": "{{['mdaok','esocvy']|join('-')}}",
+              "hit": true,
+              "output": "mdaok-esocvy",
+              "error": null
+            }
+          ],
+          "_engine": "twig"
+        },
+        {
+          "id": "if_block",
+          "template": "{% if %s == 1 %}{% endif %}",
+          "level": 1,
+          "clevel": 0,
+          "filter": null,
+          "url": "http://127.0.0.1:48603/reflect/twig?tpl=%7B%25+if+%25s+%3D%3D+1+%25%7D%7B%25+endif+%25%7D&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "162",
+              "code": "81*2",
+              "payload": "{{81*2}}",
+              "hit": true,
+              "output": "162",
+              "error": null
+            },
+            {
+              "name": "string_multiply_coerced",
+              "description": "Twig coerces the string in 7*'7' -> 49",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "awfzbzczwmz",
+              "code": "'awfzb'~'zczwmz'",
+              "payload": "{{'awfzb'~'zczwmz'}}",
+              "hit": true,
+              "output": "awfzbzczwmz",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper filter on a random string",
+              "match": "equals",
+              "expected": "PENRSZC",
+              "code": "'penrszc'|upper",
+              "payload": "{{'penrszc'|upper}}",
+              "hit": true,
+              "output": "PENRSZC",
+              "error": null
+            },
+            {
+              "name": "abs_filter",
+              "description": "Absolute value filter with grouping parentheses",
+              "match": "equals",
+              "expected": "94",
+              "code": "(-94)|abs",
+              "payload": "{{(-94)|abs}}",
+              "hit": true,
+              "output": "94",
+              "error": null
+            },
+            {
+              "name": "array_join_filter",
+              "description": "Array literal joined with a dash",
+              "match": "equals",
+              "expected": "awfzb-zczwmz",
+              "code": "['awfzb','zczwmz']|join('-')",
+              "payload": "{{['awfzb','zczwmz']|join('-')}}",
+              "hit": true,
+              "output": "awfzb-zczwmz",
+              "error": null
+            }
+          ],
+          "_engine": "twig"
+        },
+        {
+          "id": "for_loop",
+          "template": "{% for item in %s %}{% endfor %}",
+          "level": 5,
+          "clevel": 1,
+          "filter": null,
+          "url": "http://127.0.0.1:48603/reflect/twig?tpl=%7B%25+for+item+in+%25s+%25%7D%7B%25+endfor+%25%7D&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "108",
+              "code": "18*6",
+              "payload": "{{18*6}}",
+              "hit": true,
+              "output": "108",
+              "error": null
+            },
+            {
+              "name": "string_multiply_coerced",
+              "description": "Twig coerces the string in 7*'7' -> 49",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "umwmfhgukse",
+              "code": "'umwmf'~'hgukse'",
+              "payload": "{{'umwmf'~'hgukse'}}",
+              "hit": true,
+              "output": "umwmfhgukse",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper filter on a random string",
+              "match": "equals",
+              "expected": "UDUDRWN",
+              "code": "'ududrwn'|upper",
+              "payload": "{{'ududrwn'|upper}}",
+              "hit": true,
+              "output": "UDUDRWN",
+              "error": null
+            },
+            {
+              "name": "abs_filter",
+              "description": "Absolute value filter with grouping parentheses",
+              "match": "equals",
+              "expected": "20",
+              "code": "(-20)|abs",
+              "payload": "{{(-20)|abs}}",
+              "hit": true,
+              "output": "20",
+              "error": null
+            },
+            {
+              "name": "array_join_filter",
+              "description": "Array literal joined with a dash",
+              "match": "equals",
+              "expected": "umwmf-hgukse",
+              "code": "['umwmf','hgukse']|join('-')",
+              "payload": "{{['umwmf','hgukse']|join('-')}}",
+              "hit": true,
+              "output": "umwmf-hgukse",
+              "error": null
+            }
+          ],
+          "_engine": "twig"
+        },
+        {
+          "id": "filter_canonical_text",
+          "template": "%s",
+          "level": 0,
+          "clevel": 0,
+          "filter": "filter_canonical",
+          "url": "http://127.0.0.1:48603/reflect/twig/filter_canonical?tpl=%25s&inj=*",
+          "baseline_detected": false,
+          "variants_detected": true,
+          "rescued_by_variant": "math_7x7",
+          "detection_variant": "math_7x7",
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "175",
+              "code": "35*5",
+              "payload": "{{35*5}}",
+              "hit": true,
+              "output": "175",
+              "error": null
+            },
+            {
+              "name": "string_multiply_coerced",
+              "description": "Twig coerces the string in 7*'7' -> 49",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "czfwxscemsm",
+              "code": "'czfwx'~'scemsm'",
+              "payload": "{{'czfwx'~'scemsm'}}",
+              "hit": true,
+              "output": "czfwxscemsm",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper filter on a random string",
+              "match": "equals",
+              "expected": "OTOTBXJ",
+              "code": "'ototbxj'|upper",
+              "payload": "{{'ototbxj'|upper}}",
+              "hit": true,
+              "output": "OTOTBXJ",
+              "error": null
+            },
+            {
+              "name": "abs_filter",
+              "description": "Absolute value filter with grouping parentheses",
+              "match": "equals",
+              "expected": "23",
+              "code": "(-23)|abs",
+              "payload": "{{(-23)|abs}}",
+              "hit": true,
+              "output": "23",
+              "error": null
+            },
+            {
+              "name": "array_join_filter",
+              "description": "Array literal joined with a dash",
+              "match": "equals",
+              "expected": "czfwx-scemsm",
+              "code": "['czfwx','scemsm']|join('-')",
+              "payload": "{{['czfwx','scemsm']|join('-')}}",
+              "hit": true,
+              "output": "czfwx-scemsm",
+              "error": null
+            }
+          ],
+          "_engine": "twig"
+        },
+        {
+          "id": "filter_quotes_wrapped",
+          "template": "AAA%sAAA",
+          "level": 0,
+          "clevel": 0,
+          "filter": "filter_secondary",
+          "url": "http://127.0.0.1:48603/reflect/twig/filter_secondary?tpl=AAA%25sAAA&inj=*",
+          "baseline_detected": false,
+          "variants_detected": true,
+          "rescued_by_variant": "math_7x7",
+          "detection_variant": "math_7x7",
+          "variant_suite": [
+            {
+              "name": "math_7x7",
+              "description": "Compact arithmetic canary {{7*7}}",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*7",
+              "payload": "{{7*7}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "math_random_mul",
+              "description": "Randomised arithmetic expression",
+              "match": "equals",
+              "expected": "330",
+              "code": "55*6",
+              "payload": "{{55*6}}",
+              "hit": true,
+              "output": "330",
+              "error": null
+            },
+            {
+              "name": "string_multiply_coerced",
+              "description": "Twig coerces the string in 7*'7' -> 49",
+              "match": "equals",
+              "expected": "49",
+              "code": "7*'7'",
+              "payload": "{{7*'7'}}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "tilde_concat",
+              "description": "Tilde string concatenation",
+              "match": "equals",
+              "expected": "hbpdaklszjj",
+              "code": "'hbpda'~'klszjj'",
+              "payload": "{{'hbpda'~'klszjj'}}",
+              "hit": true,
+              "output": "hbpdaklszjj",
+              "error": null
+            },
+            {
+              "name": "upper_filter",
+              "description": "Upper filter on a random string",
+              "match": "equals",
+              "expected": "FGMEAHB",
+              "code": "'fgmeahb'|upper",
+              "payload": "{{'fgmeahb'|upper}}",
+              "hit": true,
+              "output": "FGMEAHB",
+              "error": null
+            },
+            {
+              "name": "abs_filter",
+              "description": "Absolute value filter with grouping parentheses",
+              "match": "equals",
+              "expected": "53",
+              "code": "(-53)|abs",
+              "payload": "{{(-53)|abs}}",
+              "hit": true,
+              "output": "53",
+              "error": null
+            },
+            {
+              "name": "array_join_filter",
+              "description": "Array literal joined with a dash",
+              "match": "equals",
+              "expected": "hbpda-klszjj",
+              "code": "['hbpda','klszjj']|join('-')",
+              "payload": "{{['hbpda','klszjj']|join('-')}}",
+              "hit": true,
+              "output": "hbpda-klszjj",
+              "error": null
+            }
+          ],
+          "_engine": "twig"
+        }
+      ]
+    },
+    "freemarker": {
+      "range_url": "http://127.0.0.1:48619",
+      "total_cases": 8,
+      "baseline_detected": 6,
+      "variants_detected": 8,
+      "baseline_rate": 0.75,
+      "variants_rate": 1.0,
+      "gained": [
+        "filter_canonical_text",
+        "filter_directive_wrapped"
+      ],
+      "variant_hits": {
+        "interpolation_7x7": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "interpolation_random_mul": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "computer_format_c": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "assign_then_multiply": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "upper_case_builtin": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "plus_concat": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        },
+        "sequence_join_builtin": {
+          "hits": 6,
+          "runs": 6,
+          "hit_rate": 1.0
+        }
+      },
+      "cases": [
+        {
+          "id": "text",
+          "template": "%s",
+          "level": 0,
+          "clevel": 0,
+          "filter": null,
+          "url": "http://127.0.0.1:48619/reflect/freemarker?tpl=%25s&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "interpolation_7x7",
+              "description": "Classic ${7*7} interpolation",
+              "match": "equals",
+              "expected": "49",
+              "code": "${7*7}",
+              "payload": "${7*7}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "interpolation_random_mul",
+              "description": "Randomised arithmetic interpolation",
+              "match": "equals",
+              "expected": "36",
+              "code": "${6*6}",
+              "payload": "${6*6}",
+              "hit": true,
+              "output": "36",
+              "error": null
+            },
+            {
+              "name": "computer_format_c",
+              "description": "?c computer-formatted random product",
+              "match": "equals",
+              "expected": "6762",
+              "code": "${(98*69)?c}",
+              "payload": "${(98*69)?c}",
+              "hit": true,
+              "output": "6762",
+              "error": null
+            },
+            {
+              "name": "assign_then_multiply",
+              "description": "<#assign> directive followed by ?c interpolation",
+              "match": "equals",
+              "expected": "6762",
+              "code": "<#assign tplmapVar=98>${(tplmapVar*69)?c}",
+              "payload": "<#assign tplmapVar=98>${(tplmapVar*69)?c}",
+              "hit": true,
+              "output": "6762",
+              "error": null
+            },
+            {
+              "name": "upper_case_builtin",
+              "description": "?upper_case built-in on a random string",
+              "match": "equals",
+              "expected": "AXATYYQ",
+              "code": "${'axatyyq'?upper_case}",
+              "payload": "${'axatyyq'?upper_case}",
+              "hit": true,
+              "output": "AXATYYQ",
+              "error": null
+            },
+            {
+              "name": "plus_concat",
+              "description": "Plus operator string concatenation",
+              "match": "equals",
+              "expected": "zyfvoaxvzmy",
+              "code": "${'zyfvo' + 'axvzmy'}",
+              "payload": "${'zyfvo' + 'axvzmy'}",
+              "hit": true,
+              "output": "zyfvoaxvzmy",
+              "error": null
+            },
+            {
+              "name": "sequence_join_builtin",
+              "description": "Sequence literal with ?join built-in",
+              "match": "equals",
+              "expected": "zyfvo-axvzmy",
+              "code": "<#assign tplmapSeq=['zyfvo','axvzmy']>${tplmapSeq?join('-')}",
+              "payload": "<#assign tplmapSeq=['zyfvo','axvzmy']>${tplmapSeq?join('-')}",
+              "hit": true,
+              "output": "zyfvo-axvzmy",
+              "error": null
+            }
+          ],
+          "_engine": "freemarker"
+        },
+        {
+          "id": "wrapped",
+          "template": "AAA%sAAA",
+          "level": 0,
+          "clevel": 0,
+          "filter": null,
+          "url": "http://127.0.0.1:48619/reflect/freemarker?tpl=AAA%25sAAA&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "interpolation_7x7",
+              "description": "Classic ${7*7} interpolation",
+              "match": "equals",
+              "expected": "49",
+              "code": "${7*7}",
+              "payload": "${7*7}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "interpolation_random_mul",
+              "description": "Randomised arithmetic interpolation",
+              "match": "equals",
+              "expected": "42",
+              "code": "${6*7}",
+              "payload": "${6*7}",
+              "hit": true,
+              "output": "42",
+              "error": null
+            },
+            {
+              "name": "computer_format_c",
+              "description": "?c computer-formatted random product",
+              "match": "equals",
+              "expected": "6720",
+              "code": "${(84*80)?c}",
+              "payload": "${(84*80)?c}",
+              "hit": true,
+              "output": "6720",
+              "error": null
+            },
+            {
+              "name": "assign_then_multiply",
+              "description": "<#assign> directive followed by ?c interpolation",
+              "match": "equals",
+              "expected": "6720",
+              "code": "<#assign tplmapVar=84>${(tplmapVar*80)?c}",
+              "payload": "<#assign tplmapVar=84>${(tplmapVar*80)?c}",
+              "hit": true,
+              "output": "6720",
+              "error": null
+            },
+            {
+              "name": "upper_case_builtin",
+              "description": "?upper_case built-in on a random string",
+              "match": "equals",
+              "expected": "YGKKBOQ",
+              "code": "${'ygkkboq'?upper_case}",
+              "payload": "${'ygkkboq'?upper_case}",
+              "hit": true,
+              "output": "YGKKBOQ",
+              "error": null
+            },
+            {
+              "name": "plus_concat",
+              "description": "Plus operator string concatenation",
+              "match": "equals",
+              "expected": "fghxfggxdsd",
+              "code": "${'fghxf' + 'ggxdsd'}",
+              "payload": "${'fghxf' + 'ggxdsd'}",
+              "hit": true,
+              "output": "fghxfggxdsd",
+              "error": null
+            },
+            {
+              "name": "sequence_join_builtin",
+              "description": "Sequence literal with ?join built-in",
+              "match": "equals",
+              "expected": "fghxf-ggxdsd",
+              "code": "<#assign tplmapSeq=['fghxf','ggxdsd']>${tplmapSeq?join('-')}",
+              "payload": "<#assign tplmapSeq=['fghxf','ggxdsd']>${tplmapSeq?join('-')}",
+              "hit": true,
+              "output": "fghxf-ggxdsd",
+              "error": null
+            }
+          ],
+          "_engine": "freemarker"
+        },
+        {
+          "id": "interpolation_spaced",
+          "template": "${ %s }",
+          "level": 1,
+          "clevel": 0,
+          "filter": null,
+          "url": "http://127.0.0.1:48619/reflect/freemarker?tpl=%24%7B+%25s+%7D&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "interpolation_7x7",
+              "description": "Classic ${7*7} interpolation",
+              "match": "equals",
+              "expected": "49",
+              "code": "${7*7}",
+              "payload": "${7*7}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "interpolation_random_mul",
+              "description": "Randomised arithmetic interpolation",
+              "match": "equals",
+              "expected": "6",
+              "code": "${2*3}",
+              "payload": "${2*3}",
+              "hit": true,
+              "output": "6",
+              "error": null
+            },
+            {
+              "name": "computer_format_c",
+              "description": "?c computer-formatted random product",
+              "match": "equals",
+              "expected": "1596",
+              "code": "${(19*84)?c}",
+              "payload": "${(19*84)?c}",
+              "hit": true,
+              "output": "1596",
+              "error": null
+            },
+            {
+              "name": "assign_then_multiply",
+              "description": "<#assign> directive followed by ?c interpolation",
+              "match": "equals",
+              "expected": "1596",
+              "code": "<#assign tplmapVar=19>${(tplmapVar*84)?c}",
+              "payload": "<#assign tplmapVar=19>${(tplmapVar*84)?c}",
+              "hit": true,
+              "output": "1596",
+              "error": null
+            },
+            {
+              "name": "upper_case_builtin",
+              "description": "?upper_case built-in on a random string",
+              "match": "equals",
+              "expected": "DVWJGKF",
+              "code": "${'dvwjgkf'?upper_case}",
+              "payload": "${'dvwjgkf'?upper_case}",
+              "hit": true,
+              "output": "DVWJGKF",
+              "error": null
+            },
+            {
+              "name": "plus_concat",
+              "description": "Plus operator string concatenation",
+              "match": "equals",
+              "expected": "uixmvbiadqs",
+              "code": "${'uixmv' + 'biadqs'}",
+              "payload": "${'uixmv' + 'biadqs'}",
+              "hit": true,
+              "output": "uixmvbiadqs",
+              "error": null
+            },
+            {
+              "name": "sequence_join_builtin",
+              "description": "Sequence literal with ?join built-in",
+              "match": "equals",
+              "expected": "uixmv-biadqs",
+              "code": "<#assign tplmapSeq=['uixmv','biadqs']>${tplmapSeq?join('-')}",
+              "payload": "<#assign tplmapSeq=['uixmv','biadqs']>${tplmapSeq?join('-')}",
+              "hit": true,
+              "output": "uixmv-biadqs",
+              "error": null
+            }
+          ],
+          "_engine": "freemarker"
+        },
+        {
+          "id": "assign_directive",
+          "template": "<#assign s = %s>",
+          "level": 2,
+          "clevel": 1,
+          "filter": null,
+          "url": "http://127.0.0.1:48619/reflect/freemarker?tpl=%3C%23assign+s+%3D+%25s%3E&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "interpolation_7x7",
+              "description": "Classic ${7*7} interpolation",
+              "match": "equals",
+              "expected": "49",
+              "code": "${7*7}",
+              "payload": "${7*7}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "interpolation_random_mul",
+              "description": "Randomised arithmetic interpolation",
+              "match": "equals",
+              "expected": "12",
+              "code": "${2*6}",
+              "payload": "${2*6}",
+              "hit": true,
+              "output": "12",
+              "error": null
+            },
+            {
+              "name": "computer_format_c",
+              "description": "?c computer-formatted random product",
+              "match": "equals",
+              "expected": "1218",
+              "code": "${(14*87)?c}",
+              "payload": "${(14*87)?c}",
+              "hit": true,
+              "output": "1218",
+              "error": null
+            },
+            {
+              "name": "assign_then_multiply",
+              "description": "<#assign> directive followed by ?c interpolation",
+              "match": "equals",
+              "expected": "1218",
+              "code": "<#assign tplmapVar=14>${(tplmapVar*87)?c}",
+              "payload": "<#assign tplmapVar=14>${(tplmapVar*87)?c}",
+              "hit": true,
+              "output": "1218",
+              "error": null
+            },
+            {
+              "name": "upper_case_builtin",
+              "description": "?upper_case built-in on a random string",
+              "match": "equals",
+              "expected": "QCOOWNY",
+              "code": "${'qcoowny'?upper_case}",
+              "payload": "${'qcoowny'?upper_case}",
+              "hit": true,
+              "output": "QCOOWNY",
+              "error": null
+            },
+            {
+              "name": "plus_concat",
+              "description": "Plus operator string concatenation",
+              "match": "equals",
+              "expected": "wsrrxsxkjdx",
+              "code": "${'wsrrx' + 'sxkjdx'}",
+              "payload": "${'wsrrx' + 'sxkjdx'}",
+              "hit": true,
+              "output": "wsrrxsxkjdx",
+              "error": null
+            },
+            {
+              "name": "sequence_join_builtin",
+              "description": "Sequence literal with ?join built-in",
+              "match": "equals",
+              "expected": "wsrrx-sxkjdx",
+              "code": "<#assign tplmapSeq=['wsrrx','sxkjdx']>${tplmapSeq?join('-')}",
+              "payload": "<#assign tplmapSeq=['wsrrx','sxkjdx']>${tplmapSeq?join('-')}",
+              "hit": true,
+              "output": "wsrrx-sxkjdx",
+              "error": null
+            }
+          ],
+          "_engine": "freemarker"
+        },
+        {
+          "id": "comment_directive",
+          "template": "<#-- %s -->",
+          "level": 5,
+          "clevel": 1,
+          "filter": null,
+          "url": "http://127.0.0.1:48619/reflect/freemarker?tpl=%3C%23--+%25s+--%3E&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "interpolation_7x7",
+              "description": "Classic ${7*7} interpolation",
+              "match": "equals",
+              "expected": "49",
+              "code": "${7*7}",
+              "payload": "${7*7}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "interpolation_random_mul",
+              "description": "Randomised arithmetic interpolation",
+              "match": "equals",
+              "expected": "4",
+              "code": "${2*2}",
+              "payload": "${2*2}",
+              "hit": true,
+              "output": "4",
+              "error": null
+            },
+            {
+              "name": "computer_format_c",
+              "description": "?c computer-formatted random product",
+              "match": "equals",
+              "expected": "1710",
+              "code": "${(19*90)?c}",
+              "payload": "${(19*90)?c}",
+              "hit": true,
+              "output": "1710",
+              "error": null
+            },
+            {
+              "name": "assign_then_multiply",
+              "description": "<#assign> directive followed by ?c interpolation",
+              "match": "equals",
+              "expected": "1710",
+              "code": "<#assign tplmapVar=19>${(tplmapVar*90)?c}",
+              "payload": "<#assign tplmapVar=19>${(tplmapVar*90)?c}",
+              "hit": true,
+              "output": "1710",
+              "error": null
+            },
+            {
+              "name": "upper_case_builtin",
+              "description": "?upper_case built-in on a random string",
+              "match": "equals",
+              "expected": "DCHGDZP",
+              "code": "${'dchgdzp'?upper_case}",
+              "payload": "${'dchgdzp'?upper_case}",
+              "hit": true,
+              "output": "DCHGDZP",
+              "error": null
+            },
+            {
+              "name": "plus_concat",
+              "description": "Plus operator string concatenation",
+              "match": "equals",
+              "expected": "kqhpgiwoczk",
+              "code": "${'kqhpg' + 'iwoczk'}",
+              "payload": "${'kqhpg' + 'iwoczk'}",
+              "hit": true,
+              "output": "kqhpgiwoczk",
+              "error": null
+            },
+            {
+              "name": "sequence_join_builtin",
+              "description": "Sequence literal with ?join built-in",
+              "match": "equals",
+              "expected": "kqhpg-iwoczk",
+              "code": "<#assign tplmapSeq=['kqhpg','iwoczk']>${tplmapSeq?join('-')}",
+              "payload": "<#assign tplmapSeq=['kqhpg','iwoczk']>${tplmapSeq?join('-')}",
+              "hit": true,
+              "output": "kqhpg-iwoczk",
+              "error": null
+            }
+          ],
+          "_engine": "freemarker"
+        },
+        {
+          "id": "if_right_operand",
+          "template": "<#if 1 == %s></#if>",
+          "level": 2,
+          "clevel": 1,
+          "filter": null,
+          "url": "http://127.0.0.1:48619/reflect/freemarker?tpl=%3C%23if+1+%3D%3D+%25s%3E%3C%2F%23if%3E&inj=*",
+          "baseline_detected": true,
+          "variants_detected": true,
+          "rescued_by_variant": null,
+          "detection_variant": null,
+          "variant_suite": [
+            {
+              "name": "interpolation_7x7",
+              "description": "Classic ${7*7} interpolation",
+              "match": "equals",
+              "expected": "49",
+              "code": "${7*7}",
+              "payload": "${7*7}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "interpolation_random_mul",
+              "description": "Randomised arithmetic interpolation",
+              "match": "equals",
+              "expected": "64",
+              "code": "${8*8}",
+              "payload": "${8*8}",
+              "hit": true,
+              "output": "64",
+              "error": null
+            },
+            {
+              "name": "computer_format_c",
+              "description": "?c computer-formatted random product",
+              "match": "equals",
+              "expected": "1656",
+              "code": "${(18*92)?c}",
+              "payload": "${(18*92)?c}",
+              "hit": true,
+              "output": "1656",
+              "error": null
+            },
+            {
+              "name": "assign_then_multiply",
+              "description": "<#assign> directive followed by ?c interpolation",
+              "match": "equals",
+              "expected": "1656",
+              "code": "<#assign tplmapVar=18>${(tplmapVar*92)?c}",
+              "payload": "<#assign tplmapVar=18>${(tplmapVar*92)?c}",
+              "hit": true,
+              "output": "1656",
+              "error": null
+            },
+            {
+              "name": "upper_case_builtin",
+              "description": "?upper_case built-in on a random string",
+              "match": "equals",
+              "expected": "GESCRNU",
+              "code": "${'gescrnu'?upper_case}",
+              "payload": "${'gescrnu'?upper_case}",
+              "hit": true,
+              "output": "GESCRNU",
+              "error": null
+            },
+            {
+              "name": "plus_concat",
+              "description": "Plus operator string concatenation",
+              "match": "equals",
+              "expected": "slizmgpfjoo",
+              "code": "${'slizm' + 'gpfjoo'}",
+              "payload": "${'slizm' + 'gpfjoo'}",
+              "hit": true,
+              "output": "slizmgpfjoo",
+              "error": null
+            },
+            {
+              "name": "sequence_join_builtin",
+              "description": "Sequence literal with ?join built-in",
+              "match": "equals",
+              "expected": "slizm-gpfjoo",
+              "code": "<#assign tplmapSeq=['slizm','gpfjoo']>${tplmapSeq?join('-')}",
+              "payload": "<#assign tplmapSeq=['slizm','gpfjoo']>${tplmapSeq?join('-')}",
+              "hit": true,
+              "output": "slizm-gpfjoo",
+              "error": null
+            }
+          ],
+          "_engine": "freemarker"
+        },
+        {
+          "id": "filter_canonical_text",
+          "template": "%s",
+          "level": 0,
+          "clevel": 0,
+          "filter": "filter_canonical",
+          "url": "http://127.0.0.1:48619/reflect/freemarker/filter_canonical?tpl=%25s&inj=*",
+          "baseline_detected": false,
+          "variants_detected": true,
+          "rescued_by_variant": "interpolation_7x7",
+          "detection_variant": "interpolation_7x7",
+          "variant_suite": [
+            {
+              "name": "interpolation_7x7",
+              "description": "Classic ${7*7} interpolation",
+              "match": "equals",
+              "expected": "49",
+              "code": "${7*7}",
+              "payload": "${7*7}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "interpolation_random_mul",
+              "description": "Randomised arithmetic interpolation",
+              "match": "equals",
+              "expected": "40",
+              "code": "${5*8}",
+              "payload": "${5*8}",
+              "hit": true,
+              "output": "40",
+              "error": null
+            },
+            {
+              "name": "computer_format_c",
+              "description": "?c computer-formatted random product",
+              "match": "equals",
+              "expected": "2052",
+              "code": "${(54*38)?c}",
+              "payload": "${(54*38)?c}",
+              "hit": true,
+              "output": "2052",
+              "error": null
+            },
+            {
+              "name": "assign_then_multiply",
+              "description": "<#assign> directive followed by ?c interpolation",
+              "match": "equals",
+              "expected": "2052",
+              "code": "<#assign tplmapVar=54>${(tplmapVar*38)?c}",
+              "payload": "<#assign tplmapVar=54>${(tplmapVar*38)?c}",
+              "hit": true,
+              "output": "2052",
+              "error": null
+            },
+            {
+              "name": "upper_case_builtin",
+              "description": "?upper_case built-in on a random string",
+              "match": "equals",
+              "expected": "RTGQQII",
+              "code": "${'rtgqqii'?upper_case}",
+              "payload": "${'rtgqqii'?upper_case}",
+              "hit": true,
+              "output": "RTGQQII",
+              "error": null
+            },
+            {
+              "name": "plus_concat",
+              "description": "Plus operator string concatenation",
+              "match": "equals",
+              "expected": "vfznnxcllya",
+              "code": "${'vfznn' + 'xcllya'}",
+              "payload": "${'vfznn' + 'xcllya'}",
+              "hit": true,
+              "output": "vfznnxcllya",
+              "error": null
+            },
+            {
+              "name": "sequence_join_builtin",
+              "description": "Sequence literal with ?join built-in",
+              "match": "equals",
+              "expected": "vfznn-xcllya",
+              "code": "<#assign tplmapSeq=['vfznn','xcllya']>${tplmapSeq?join('-')}",
+              "payload": "<#assign tplmapSeq=['vfznn','xcllya']>${tplmapSeq?join('-')}",
+              "hit": true,
+              "output": "vfznn-xcllya",
+              "error": null
+            }
+          ],
+          "_engine": "freemarker"
+        },
+        {
+          "id": "filter_directive_wrapped",
+          "template": "AAA%sAAA",
+          "level": 0,
+          "clevel": 0,
+          "filter": "filter_secondary",
+          "url": "http://127.0.0.1:48619/reflect/freemarker/filter_secondary?tpl=AAA%25sAAA&inj=*",
+          "baseline_detected": false,
+          "variants_detected": true,
+          "rescued_by_variant": "interpolation_7x7",
+          "detection_variant": "interpolation_7x7",
+          "variant_suite": [
+            {
+              "name": "interpolation_7x7",
+              "description": "Classic ${7*7} interpolation",
+              "match": "equals",
+              "expected": "49",
+              "code": "${7*7}",
+              "payload": "${7*7}",
+              "hit": true,
+              "output": "49",
+              "error": null
+            },
+            {
+              "name": "interpolation_random_mul",
+              "description": "Randomised arithmetic interpolation",
+              "match": "equals",
+              "expected": "12",
+              "code": "${2*6}",
+              "payload": "${2*6}",
+              "hit": true,
+              "output": "12",
+              "error": null
+            },
+            {
+              "name": "computer_format_c",
+              "description": "?c computer-formatted random product",
+              "match": "equals",
+              "expected": "902",
+              "code": "${(82*11)?c}",
+              "payload": "${(82*11)?c}",
+              "hit": true,
+              "output": "902",
+              "error": null
+            },
+            {
+              "name": "assign_then_multiply",
+              "description": "<#assign> directive followed by ?c interpolation",
+              "match": "equals",
+              "expected": "902",
+              "code": "<#assign tplmapVar=82>${(tplmapVar*11)?c}",
+              "payload": "<#assign tplmapVar=82>${(tplmapVar*11)?c}",
+              "hit": false,
+              "output": "",
+              "error": null
+            },
+            {
+              "name": "upper_case_builtin",
+              "description": "?upper_case built-in on a random string",
+              "match": "equals",
+              "expected": "EKCOMOO",
+              "code": "${'ekcomoo'?upper_case}",
+              "payload": "${'ekcomoo'?upper_case}",
+              "hit": true,
+              "output": "EKCOMOO",
+              "error": null
+            },
+            {
+              "name": "plus_concat",
+              "description": "Plus operator string concatenation",
+              "match": "equals",
+              "expected": "skovzelxuyo",
+              "code": "${'skovz' + 'elxuyo'}",
+              "payload": "${'skovz' + 'elxuyo'}",
+              "hit": true,
+              "output": "skovzelxuyo",
+              "error": null
+            },
+            {
+              "name": "sequence_join_builtin",
+              "description": "Sequence literal with ?join built-in",
+              "match": "equals",
+              "expected": "skovz-elxuyo",
+              "code": "<#assign tplmapSeq=['skovz','elxuyo']>${tplmapSeq?join('-')}",
+              "payload": "<#assign tplmapSeq=['skovz','elxuyo']>${tplmapSeq?join('-')}",
+              "hit": false,
+              "output": "",
+              "error": null
+            }
+          ],
+          "_engine": "freemarker"
+        }
+      ]
+    }
+  },
+  "cli": [
+    {
+      "name": "cli_jinja2",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/dev/feedback/uid36778/tplmap.py",
+        "-u",
+        "http://127.0.0.1:46551/reflect/jinja2?tpl=%25s&inj=*",
+        "-e",
+        "Jinja2",
+        "-t",
+        "R",
+        "--variants"
+      ],
+      "returncode": 0,
+      "elapsed": 0.16,
+      "engine_listed": true,
+      "variant_summary": [
+        "7",
+        "7"
+      ],
+      "fallback_listed": false,
+      "tail": "    --os-shell\t\t\t\tRun shell on the target\n    --os-cmd\t\t\t\tExecute shell commands\n    --bind-shell PORT\t\t\tConnect to a shell bind to a target port\n    --reverse-shell HOST PORT\tSend a shell back to the attacker's port\n    --upload LOCAL REMOTE\tUpload files to the server\n    --download REMOTE LOCAL\tDownload remote files"
+    },
+    {
+      "name": "cli_jinja2_filter_canonical",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/dev/feedback/uid36778/tplmap.py",
+        "-u",
+        "http://127.0.0.1:46551/reflect/jinja2/filter_canonical?tpl=%25s&inj=*",
+        "-e",
+        "Jinja2",
+        "-t",
+        "R",
+        "--variants"
+      ],
+      "returncode": 0,
+      "elapsed": 0.13,
+      "engine_listed": true,
+      "variant_summary": [
+        "6",
+        "7"
+      ],
+      "fallback_listed": true,
+      "tail": "    --os-shell\t\t\t\tRun shell on the target\n    --os-cmd\t\t\t\tExecute shell commands\n    --bind-shell PORT\t\t\tConnect to a shell bind to a target port\n    --reverse-shell HOST PORT\tSend a shell back to the attacker's port\n    --upload LOCAL REMOTE\tUpload files to the server\n    --download REMOTE LOCAL\tDownload remote files"
+    },
+    {
+      "name": "cli_twig",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/dev/feedback/uid36778/tplmap.py",
+        "-u",
+        "http://127.0.0.1:48603/reflect/twig?tpl=%25s&inj=*",
+        "-e",
+        "Twig",
+        "-t",
+        "R",
+        "--variants"
+      ],
+      "returncode": 0,
+      "elapsed": 0.22,
+      "engine_listed": true,
+      "variant_summary": [
+        "7",
+        "7"
+      ],
+      "fallback_listed": false,
+      "tail": "  upper_filter                 hit      'HRWAUIU'\n  abs_filter                   hit      '99'\n  array_join_filter            hit      'wxucz-mgmnfx'\n\n  7/7 variants confirmed\nRerun tplmap providing one of the following options:"
+    },
+    {
+      "name": "cli_twig_filter_canonical",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/dev/feedback/uid36778/tplmap.py",
+        "-u",
+        "http://127.0.0.1:48603/reflect/twig/filter_canonical?tpl=%25s&inj=*",
+        "-e",
+        "Twig",
+        "-t",
+        "R",
+        "--variants"
+      ],
+      "returncode": 0,
+      "elapsed": 0.18,
+      "engine_listed": true,
+      "variant_summary": [
+        "7",
+        "7"
+      ],
+      "fallback_listed": true,
+      "tail": "  upper_filter                 hit      'TDEYVQB'\n  abs_filter                   hit      '55'\n  array_join_filter            hit      'zyczw-nfnvwr'\n\n  7/7 variants confirmed\nRerun tplmap providing one of the following options:"
+    },
+    {
+      "name": "cli_freemarker",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/dev/feedback/uid36778/tplmap.py",
+        "-u",
+        "http://127.0.0.1:48619/reflect/freemarker?tpl=%25s&inj=*",
+        "-e",
+        "Freemarker",
+        "-t",
+        "R",
+        "--variants"
+      ],
+      "returncode": 0,
+      "elapsed": 0.21,
+      "engine_listed": true,
+      "variant_summary": [
+        "7",
+        "7"
+      ],
+      "fallback_listed": false,
+      "tail": "    --os-shell\t\t\t\tRun shell on the target\n    --os-cmd\t\t\t\tExecute shell commands\n    --bind-shell PORT\t\t\tConnect to a shell bind to a target port\n    --reverse-shell HOST PORT\tSend a shell back to the attacker's port\n    --upload LOCAL REMOTE\tUpload files to the server\n    --download REMOTE LOCAL\tDownload remote files"
+    },
+    {
+      "name": "cli_freemarker_filter_canonical",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/dev/feedback/uid36778/tplmap.py",
+        "-u",
+        "http://127.0.0.1:48619/reflect/freemarker/filter_canonical?tpl=%25s&inj=*",
+        "-e",
+        "Freemarker",
+        "-t",
+        "R",
+        "--variants"
+      ],
+      "returncode": 0,
+      "elapsed": 0.18,
+      "engine_listed": true,
+      "variant_summary": [
+        "7",
+        "7"
+      ],
+      "fallback_listed": true,
+      "tail": "    --os-shell\t\t\t\tRun shell on the target\n    --os-cmd\t\t\t\tExecute shell commands\n    --bind-shell PORT\t\t\tConnect to a shell bind to a target port\n    --reverse-shell HOST PORT\tSend a shell back to the attacker's port\n    --upload LOCAL REMOTE\tUpload files to the server\n    --download REMOTE LOCAL\tDownload remote files"
+    }
+  ],
+  "static_cli": [
+    {
+      "name": "cli_help_lists_variants",
+      "returncode": 0,
+      "ok": true
+    },
+    {
+      "name": "cli_list_variants",
+      "returncode": 0,
+      "ok": true
+    }
+  ]
+}

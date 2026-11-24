@@ -1,0 +1,17 @@
+{
+  "root": "/home/dev/feedback/uid36778",
+  "B": "/home/dev/feedback/uid36778",
+  "sha": "050c45477affa75cec06969f7189b34edb9aa8f1",
+  "wslDistro": "Ubuntu-26.04",
+  "source": {
+    "owner": "epinna",
+    "repo": "tplmap",
+    "sha": "050c45477affa75cec06969f7189b34edb9aa8f1"
+  },
+  "fork": {
+    "owner": "Rrr119",
+    "repo": "tplmap",
+    "cloneUrl": "https://github.com/Rrr119/tplmap.git"
+  },
+  "at": "2026-11-24T16:00:31.317Z"
+}

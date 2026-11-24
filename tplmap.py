@@ -2,6 +2,7 @@
 from utils import cliparser
 from core import checks
 from core.channel import Channel
+from core.variants import format_catalogue
 from utils.loggers import log
 import traceback
 
@@ -10,6 +11,10 @@ version = '0.5'
 def main():
     
     args = vars(cliparser.options)
+
+    if args.get('list_variants'):
+        print(format_catalogue())
+        return
     
     if not args.get('url'):
         cliparser.parser.error('URL is required. Run with -h for help.')

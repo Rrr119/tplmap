@@ -1,0 +1,18 @@
+{
+  "uid": "36778",
+  "harness": "Codex CLI",
+  "snapshotUrl": "https://github.com/Rrr119/tplmap/commit/050c45477affa75cec06969f7189b34edb9aa8f1",
+  "harnessVersion": "codex-cli 0.167.2",
+  "operatingSystem": "Ubuntu 26.04.1 LTS",
+  "operatingSystemCell": [
+    "MacOS/Linux"
+  ],
+  "outputDirectory": "/home/dev/feedback/uid36778",
+  "wslDistro": "Ubuntu-26.04",
+  "B": {
+    "success": false,
+    "canceled": true,
+    "error": "任务已取消",
+    "side": "B"
+  }
+}

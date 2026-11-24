@@ -44,7 +44,7 @@ class Javascript(Plugin):
                 'call': 'render',
                 'evaluate': """eval(Buffer('%(code_b64)s', 'base64').toString())""",
                 'test_os': """require('os').platform()""",
-                'test_os_expected': '^[\w-]+$',
+                'test_os_expected': r'^[\w-]+$',
             },
             'blind' : {
                 'call': 'execute_blind',
